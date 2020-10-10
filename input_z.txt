@@ -1,0 +1,55 @@
+<comment>
+problem = verif_z
+author  = Beresnyak
+reference = 
+config  = -b --flux hlld --prob verif_z -hdf5 --hdf5_path /Users/beres/homebrew/Cellar/hdf5/1.8.18
+
+<job>
+problem_id      = ver    # problem ID: basename of output filenames
+
+<output1>
+file_type  = hst       # History data dump
+dt         = 1e-7     # time increment between outputs
+
+<time>
+cfl_number = 0.333       # The Courant, Friedrichs, & Lewy (CFL) Number
+xorder=2
+nlim       = -1    # cycle limit
+tlim       = 2e-6      # time limit
+ncycle_out = 100
+
+<mesh>
+nx1        = 4       # Number of zones in x-direction
+x1min      = 0       # minimum value of x
+x1max      = 5       # maximum value of x
+ix1_bc     = reflecting # inner-x boundary flag
+ox1_bc     = reflecting # outer-x boundary flag
+
+nx2        = 4              # Number of zones in Y-direction
+x2min      = 0   
+x2max      = 5   
+ix2_bc     = periodic       # inner-J (Y) boundary flag
+ox2_bc     = periodic       # outer-J (Y) boundary flag
+
+nx3        = 400    # Number of zones in X3-direction
+x3min      = 0      # minimum value of X3
+x3max      = 77.9   # maximum value of X3
+ix3_bc     = user   # inner-z boundary flag
+ox3_bc     = reflecting #user    # outer-z boundary flag
+
+<hydro>
+gamma   = 1.666666666667     # gamma = C_p/C_v
+
+<problem>
+mass =   8e-5
+rho_min= 1e-10 # inflow rho
+E_min=0
+z0=1.0
+dt_min= 5e-10
+
+V0=6e5    # in V
+I0=2e5    # initial current in Amp
+I20=2e5   # initial internal current
+R1=0.0    # Ohm
+C1=1e-6   # Farad
+L1=7e-7   # Henry
