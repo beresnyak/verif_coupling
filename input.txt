@@ -1,0 +1,61 @@
+<comment>
+problem = verif_z
+author  = Beresnyak
+reference = 
+config  = -b --flux hlle --coord cylindrical --prob verif_z
+# puff only
+
+<job>
+problem_id      = ver    # problem ID: basename of output filenames
+
+<output1>
+file_type  = hst       # History data dump
+dt         = 1e-7     # time increment between outputs
+
+<output2>
+file_type = tab               # Binary data dump
+dt        = 1e-8               # time increment between outputs
+variable  = prim              # output primitive variables
+x2_slice    = 0.0
+
+<time>
+cfl_number = 0.333       # The Courant, Friedrichs, & Lewy (CFL) Number
+nlim       = -1    # cycle limit
+tlim       = 3e-8
+ncycle_out = 100
+xorder     = 2
+
+<mesh>
+nx1        = 320         # Number of zones in R-direction
+x1min      = 1.25e-3        # minimum value of R
+x1max      = 1.6       # maximum value of R
+ix1_bc     = reflecting # inner-r boundary flag
+ox1_bc     = user  # outer-r boundary flag
+
+nx2        = 4              # Number of zones in Y-direction
+x2min      = -3.141592654   
+x2max      = 3.141592654   
+ix2_bc     = periodic       # inner-J (Y) boundary flag
+ox2_bc     = periodic       # outer-J (Y) boundary flag
+
+nx3        = 1      # Number of zones in X3-direction
+x3min      = 0       # minimum value of X3
+x3max      = 60       # maximum value of X3
+ix3_bc     = reflecting # inner-z boundary flag
+ox3_bc     = reflecting # outer-z boundary flag
+
+<hydro>
+gamma   = 1.666666666667     # gamma = C_p/C_v
+
+<problem>
+rho_min= 3e-7 # inflow rho
+E_min=0
+alpha=3.00000
+beta=1.50000
+pcoeff=0.00000e+00
+d=1.00000e-04
+bphi=1.17322e+06
+bz=3.51965e+05
+file=r03ma346chi150gam167rot000.txt
+
+
