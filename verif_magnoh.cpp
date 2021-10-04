@@ -234,7 +234,7 @@ for(int k=ks; k<=ke; k++) // inflow with vr and rho_min
           for(int i=ie+1; i<=ie+ngh;  i++)
           {
            prim(IDN,k,j,i) = rho_min;
-           prim(IVX,k,j,i) = prim(IVX,k,j,ie); //+(vr_avr/r-curr_rate)*delta_r;
+           prim(IVX,k,j,i) = prim(IVX,k,j,ie);
            prim(IVY,k,j,i) = 0.0;
            prim(IVZ,k,j,i) = 0.0;
            prim(IPR,k,j,i) = E_min*gamma1;
@@ -248,7 +248,7 @@ for(int k=ks; k<=ke; k++) // inflow with vr and rho_min
       
           for(int k=ks; k<=ke+1; k++)
           for(int j=js; j<=je; j++)
-          for(int i=ie+1; i<=ie+ngh;  i++) b.x3f(k,j,i) = Bz_rt; //b.x3f(k,j,ie); //Bz_rt; //*rt*rt/pmb->pcoord->x1v(i)/pmb->pcoord->x1v(i);
+          for(int i=ie+1; i<=ie+ngh;  i++) b.x3f(k,j,i) = Bz_rt;
 
       
 }
